@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>屏幕共享</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script id="init">
+    // 定义服务器信息的变量
+    let ip, port, turnPort, turnUser, turnPassword;
+
+    // 开始连接服务器
+    function startConnecting() {
+        // 隐藏输入服务器信息的窗口
+        document.getElementById('settingsBasic').style.display = 'none';
+
+        // 获取用户输入的服务器信息，存到对应变量里
+        ip = document.getElementById('ipInput').value;
+        port = document.getElementById('portInput').value;
+        turnPort = document.getElementById('turnPortInput').value;
+        turnUser = document.getElementById('turnUserInput').value;
+        turnPassword = document.getElementById('turnPasswordInput').value;
+
+        // 动态加载 srceen-sharing.js 文件
+        let script = document.createElement('script');
+        script.src = "srceen-sharing.js";  // 脚本路径
+        document.body.appendChild(script);
+    }
+</script>
+
+<body>
+    <!-- 基本设置区域：输入服务器信息 -->
+    <div id="settingsBasic">
+        <div class="basic-content">
+            <h3>输入服务器信息</h3>
+            <input type="text" id="ipInput" class="input-field" placeholder="输入服务器 IP">
+            <input type="text" id="portInput" class="input-field" placeholder="输入端口">
+            <input type="text" id="turnPortInput" class="input-field" placeholder="输入 TURN 服务器端口">
+            <input type="text" id="turnUserInput" class="input-field" placeholder="输入 TURN 用户名">
+            <input type="password" id="turnPasswordInput" class="input-field" placeholder="输入 TURN 密码">
+            <br>
+            <button class="btn" onclick="startConnecting()">确认</button>  <!-- 按钮点击后开始连接,执行 -->
+        </div>
+    </div>
+
+    <!-- 角色选择区域 -->
+    <div class="container">
+        <h1>选择角色</h1>
+        <div id="identitySelector">
+            <!-- 选择角色按钮 -->
+            <button class="btn" onclick="selectRole('sender')">我是发起者</button>
+            <button class="btn" onclick="selectRole('receiver')">我是接收者</button>
+        </div>
+
+        <!-- 视频显示区域 -->
+        <div class="video-container">
+            <video id="localVideo" width="600" height="400" autoplay muted></video>  <!-- 本地视频，给发起者预览自己的分享画面 -->
+            <video id="remoteVideo" width="600" height="400" autoplay></video>  <!-- 远程视频，给接收者接收画面 -->
+        </div>
+
+        <!-- 全屏按钮 -->
+        <button class="full-screen-btn" onclick="toggleFullScreen()">全屏显示</button>
+    </div>
+
+    <!-- 选择分享规格的模态框弹窗 -->
+    <div id="settingsModal">
+        <div class="modal-content">
+            <h3>选择分享规格</h3>
+
+            <!-- 分辨率选择 -->
+            <label>分辨率：</label>
+            <select id="resolutionSelect">
+                <option value="1920x1080">1920x1080</option>
+                <option value="1280x720">1280x720</option>
+            </select>
+            <br>
+
+            <!-- 帧率选择 -->
+            <label>帧率：</label>
+            <select id="frameRateSelect">
+                <option value="30">30 FPS</option>
+                <option value="60">60 FPS</option>
+            </select>
+            <br>
+
+            <!-- 码率选择 -->
+            <label>码率：</label>
+            <select id="bitrateSelect">
+                <option value="2000000">2 Mbps</option>
+                <option value="3000000">3 Mbps</option>
+                <option value="4000000">4 Mbps</option>
+                <option value="5000000">5 Mbps</option>
+            </select>
+            <br>
+
+            <!-- 确认按钮 -->
+            <button class="btn" onclick="confirmSettings()">确认</button>
+        </div>
+    </div>
+</body>
+</html>

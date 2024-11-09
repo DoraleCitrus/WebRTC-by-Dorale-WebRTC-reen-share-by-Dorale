@@ -1,0 +1,142 @@
+/* 自定义字体设置，可替换自己喜欢的字体 */
+@font-face {
+    font-family: 'CustomFont';
+    src: url('Font.ttf') format('truetype');
+}
+
+/* 基本页面样式 */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: url('background.png'); /*可以替换自己的背景图片，建议分辨率1920*1080以上*/
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'CustomFont', sans-serif;
+    color: #000;
+    overflow: hidden;
+}
+
+/* 中心容器样式 */
+.container {
+    text-align: center;
+    backdrop-filter: blur(8px); /* 背景模糊效果 */
+    border-radius: 20px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.2); /* 半透明背景 */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4); /* 投影效果 */
+}
+
+/* 主标题样式 */
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+/* 按钮样式 */
+.btn {
+    font-family: 'CustomFont', sans-serif;
+    font-size: 1.2em;
+    margin: 10px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.4); /* 半透明背景 */
+    color: #000;
+    cursor: pointer;
+    transition: all 0.3s ease; /* 过渡效果 */
+}
+
+/* 按钮悬停效果 */
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+/* 视频容器样式 */
+.video-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* 视频元素样式 */
+video {
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); /* 投影效果 */
+}
+
+/* 角色选择器样式 */
+#identitySelector {
+    margin-top: 20px;
+}
+
+/* 全屏按钮样式 */
+.full-screen-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: rgba(255, 255, 255, 0.4); /* 半透明背景 */
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'CustomFont', sans-serif;
+    color: #000;
+}
+
+/* 全屏按钮悬停效果 */
+.full-screen-btn:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* 设置模态框样式 */
+#settingsModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+    justify-content: center;
+    align-items: center;
+}
+
+/* 模态框内容样式 */
+.modal-content {
+    background: rgba(255, 255, 255, 0.9); /* 背景色及透明度 */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+/* 基本设置窗口样式 */
+#settingsBasic {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* 确保该元素位于最前 */
+}
+
+/* 基本设置内容样式 */
+.basic-content {
+    background: rgba(255, 255, 255, 0.9); /* 背景色及透明度 */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
